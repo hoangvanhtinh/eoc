@@ -5,7 +5,7 @@
       "destination": "https://03rp.vercel.app/:path*"
     },
      {
-      "source": "/rs03/2026/RST/:path*",
+      "source": "/rs3/:path*",
       "destination": " https://rs3-five.vercel.app/:path*"
     },
     {
