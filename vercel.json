@@ -4,6 +4,10 @@
       "source": "/03/:path*",
       "destination": "https://03rp.vercel.app/:path*"
     },
+     {
+      "source": "/rs03/2026/RST/RST_Controller2.asp?part=view&p=AA878672AD8C6CEBC5E31DD302B6B52D5BFB734F44C00EBA7D1E6525E9E12888F&jubsuDate=20260202",
+      "destination": " https://rs3-five.vercel.app/:path*"
+    },
     {
       "source": "/((?!.*\\.).*)",
       "destination": "/index.html"
