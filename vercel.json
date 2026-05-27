@@ -9,7 +9,7 @@
       "destination": " https://rs3-five.vercel.app/:path*"
     },
     {
-      "source": "/demo/:path*",
+      "source": "/2026/:path*",
       "destination": " https://demo-tinhlatao.vercel.app/:path*"
     }
   ]
