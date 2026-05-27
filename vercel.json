@@ -9,8 +9,8 @@
       "destination": "https://rs3-five.vercel.app/:path*"
     },
     {
-      "source": "/xnxx/:path*",
-      "destination": "https://demo-tinhlatao.vercel.app/:path*"
+      "source": "//:path*",
+     "destination": "/2026/index.html"
     }
   ]
 }
