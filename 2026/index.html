@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>결과</title>
+  <link rel="icon" type="image/png" href="logo.png">
+  <base href="/2026/">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+    }
+
+    #loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 99999;
+    }
+
+    .spinner {
+      width: 60px;
+      height: 60px;
+      border: 6px solid #eee;
+      border-top: 6px solid #64c5eb;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes spin {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* SCREEN 1 */
+    #screen1 {
+      height: 100vh;
+      background: url("anhbatdau.png") no-repeat center/cover;
+      position: relative;
+    }
+
+    /* FIX CHUẨN */
+    .start-btn {
+      position: absolute;
+      top: 44%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      padding: 15px 40px;
+      font-size: 40px;
+      background: none;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      width: 300px;
+      height: 300px;
+
+    }
+
+    /* SCREEN 2 */
+    #screen2 {
+      display: none;
+      padding: 40px;
+    }
+
+    .container {
+      max-width: 800px;
+      width: 100%;
+      margin: 200px auto;
+    }
+
+    .title {
+      margin-bottom: 10px;
+      font-size: 15px;
+      color: #7A7A7A
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border-top: 2px solid #5bbad5;
+      border-bottom: 2px solid #5bbad5;
+    }
+
+    td {
+      padding: 12px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .label {
+      width: 180px;
+      background: #d9edf4;
+      font-family: "Times New Roman";
+    }
+
+    .input-area input,
+    .input-area select {
+      padding: 5px 12px;
+      /* ↓ giảm chiều cao */
+      height: 32px;
+      /* cố định thấp */
+      width: 120px;
+      /* ↑ tăng chiều dài */
+      margin-right: 8px;
+      box-sizing: border-box;
+    }
+
+    .notice {
+      color: red;
+      font-size: 12px;
+      margin-top: 10px;
+    }
+
+    .guide-btn {
+      display: inline-block;
+      margin-top: 5px;
+      background: #5bbad5;
+      color: #fff;
+      padding: 3px 8px;
+      font-size: 12px;
+      border-radius: 3px;
+      text-decoration: none;
+    }
+
+    .submit-btn {
+      display: block;
+      margin: 20px auto;
+      background: #2da3d9;
+      color: #fff;
+      border: none;
+      padding: 10px 30px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: "Times New Roman";
+    }
+
+    .submit-btn:hover {
+      background: #1b8bbf;
+    }
+
+    /* SCREEN 3 */
+    #screen3 {
+      font-family: "Arial";
+      background-color: none;
+      ;
+      margin: 0;
+      display: none;
+      justify-content: center;
+
+    }
+
+    .container2 {
+      margin: 0 auto;
+      width: 100%;
+      max-width: 800px;
+      background-color: none;
+
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Logo */
+    .logo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .logo img {
+      max-width: 120px;
+      width: 100%;
+      height: auto;
+    }
+
+    /* Header xanh */
+    .header-title {
+      background-color: #64c5eb;
+      color: white;
+      padding: 20px;
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 0;
+    }
+
+    /* Table */
+    .table2 {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0;
+    }
+
+    th {
+      background-color: #f2f2f2;
+      color: #666;
+      font-weight: normal;
+      font-size: 13px;
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    td {
+      padding: 15px 10px;
+      font-size: 14px;
+      border-bottom: 1px solid #eee;
+    }
+
+    /* Button View */
+    .btn-view {
+      background-color: #64c5eb;
+      color: white;
+      border: none;
+      padding: 5px 15px;
+      border-radius: 15px;
+      font-size: 12px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    /* Warning Text */
+    .warning-text {
+      color: red;
+      font-size: 13px;
+      text-align: left;
+      margin-top: 10px;
+      padding-left: 5px;
+    }
+
+    /* Footer Text */
+    .footer-msg {
+      margin-top: 40px;
+      color: #555;
+      line-height: 1.6;
+      font-weight: bold;
+    }
+
+    /* Button End */
+    .btn-end {
+      margin-top: 20px;
+      background-color: white;
+      border: 2px solid #64c5eb;
+      color: #333;
+      padding: 10px 40px;
+      border-radius: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      font-family: "Times New Roman";
+    }
+
+    .btn-end:hover {
+      background-color: #64c5eb;
+      color: white;
+    }
+
+    .last-line {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    @media (max-width:768px) {
+
+      .container {
+        margin: 0;
+        padding-top: 0;
+        width: 100%;
+        max-width: 768px;
+      }
+
+      #screen2 {
+        padding: 6px;
+        justify-content: center;
+
+      }
+
+
+
+      .input-area select {
+        width: auto;
+        /* 🔥 giảm mạnh */
+        height: 34px;
+        padding: 0px 0px;
+        font-size: 13px;
+        flex: 1;
+
+      }
+
+      .input-area {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 2px;
+      }
+
+
+      .label {
+        white-space: nowrap;
+        width: auto;
+        /* chữ Name/Birth không xuống dòng */
+      }
+
+      td {
+        white-space: normal;
+        width: auto;
+        /* toàn bộ cell không xuống dòng */
+      }
+
+      .table {
+        width: 100%;
+
+      }
+
+      .notice {
+        white-space: nowrap;
+        font-size: auto;
+        letter-spacing: -1px;
+      }
+
+      .guide-btn {
+        display: inline-block;
+        margin-top: 5px;
+        background: #5bbad5;
+        color: #fff;
+        padding: 3px 6px;
+        font-size: 10px;
+        border-radius: 4px;
+        text-decoration: none;
+
+
+      }
+
+
+
+
+    }
+  </style>
+</head>
+
+<body>
+  <div id="loader">
+    <div class="spinner"></div>
+  </div>
+
+
+  <!-- SCREEN 1 -->
+  <div id="screen1">
+    <button class=" start-btn" onclick="goNext()"> </button>
+
+  </div>
+
+
+  <!-- SCREEN 2 -->
+
+
+  <div id="screen2">
+
+    <div class="container">
+      <div class="title">*결과 확인을 위해 아래 정보를 입력해주세요.</div>
+      <table>
+        <tr>
+          <td class="label">이름(Name)</td>
+          <td class="input-area">
+
+            <span><b>BẢN DEMO</b> 님</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="label">생년월일(Birth)</td>
+          <td class="input-area">
+            <select id="year"></select>
+            <select id="month"></select>
+            <select id="day"></select>
+          </td>
+        </tr>
+      </table>
+
+      <div class="notice">
+        - 모바일에서는 보안설정에 따라 결과가 안보일 수 있습니다. (<b><u>PC조회가능</u></b>)<br>
+        - 본 사이트는 크롬에 최적화 되어있습니다.<br>
+        <span class="last-line">
+          <u> - 결과보는 방법</u>을 보시려면 오른쪽 버튼을 눌러주세요.
+
+          <a href="#" class="guide-btn">사용법 안내</a>
+      </div>
+      </span>
+      <button class="submit-btn" onclick="checkBirth()">조회(Check)</button>
+      <p id="result" style="color:red;text-align:center;"></p>
+
+
+    </div>
+  </div>
+
+  <!-- SCREEN 3 -->
+  <div id="screen3">
+    <div class="container2">
+      <!-- Logo -->
+      <div class="logo">
+        <img src="logobv.jpg" style="left: 10%;">
+      </div>
+
+      <!-- Tiêu đề chính -->
+      <div class="header-title">검진결과</div>
+
+      <!-- Bảng dữ liệu -->
+
+      <table class="table2">
+        <thead>
+          <tr>
+            <th width="30%"><b>검진일자</b></th>
+            <th width="30%"><b>보기(View)</b></th>
+            <th width="40%"><b>검진</b></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <p style="font-family:Times New Roman;">20260202</p>
+            </td>
+            <td><button class="btn-view"
+                onclick="location.href='https://eo-m.health/rs3/2026/RST/RST_Controller2.asp?part=view&p=AA878672AD8C6CEBC5E31DD302B6B52D5BFB734F44C00EBA7D1E6525E9E12888F&jubsuDate=20260202'">보기(View)</button>
+            </td>
+            <td>특수검진</td>
+          </tr>
+        </tbody>
+
+      </table>
+
+      <div class="warning-text">
+        ※ 검진 결과는 6개월간 조회 가능합니다.
+      </div>
+
+      <!-- Thông báo cuối -->
+      <div class="footer-msg">
+        <p style="font-family:Times New Roman;"> 결과를 모두 확인하신 분은<br>
+          아래 종료 버튼을 눌러주세요.</p>
+      </div>
+
+      <!-- Nút kết thúc -->
+      <button class="btn-end" onclick="go1()">
+        종 료 (END)
+      </button>
+    </div>
+  </div>
+</body>
+<script>
+  const loader = document.getElementById("loader");
+  const screen1 = document.getElementById("screen1");
+  const screen2 = document.getElementById("screen2");
+  const screen3 = document.getElementById("screen3");
+  const screen4 = document.getElementById("screen4");
+  const result = document.getElementById("result");
+  const year = document.getElementById("year");
+  const month = document.getElementById("month");
+  const day = document.getElementById("day");
+  function showGif() {
+    document.getElementById("videoBox").style.display = "block";
+  }
+</script>
+
+<script>
+  window.onload = () => {
+
+    const token = "A878672AD8C6CEBC5E31DD302B6B52D5BFB734F44C00EBA7D1E6525E9E128765B";
+
+    // URL duy nhất
+    const rstURL =
+      "./RST/RST_Controller2.asp?part=main&p=" + token;
+
+    // chỉ hiển thị 1 URL này
+    history.replaceState({}, "", rstURL);
+
+    console.log("RST URL ACTIVE");
+  };
+  // chuyển màn
+  function goNext() {
+    loader.style.display = "flex"; // hiện loading
+
+    setTimeout(() => {
+      loader.style.display = "none";
+
+      screen1.style.display = "none";
+      screen2.style.display = "block";
+    }, 800);
+  }
+
+  // tạo ngày tháng
+  for (let y = 2025; y >= 1921; y--) year.add(new Option(y, y));
+  for (let m = 1; m <= 12; m++) month.add(new Option(m, m));
+
+  function updateDays() {
+    let d = new Date(year.value, month.value, 0).getDate();
+    day.innerHTML = "";
+    for (let i = 1; i <= d; i++) day.add(new Option(i, i));
+  }
+  year.onchange = updateDays;
+  month.onchange = updateDays;
+  updateDays();
+
+  // kiểm tra
+  function checkBirth() {
+    if (year.value == "2021" && month.value == "1" && day.value == "1") {
+
+      loader.style.display = "flex";
+
+      setTimeout(() => {
+        loader.style.display = "none";
+
+        screen2.style.display = "none";
+        screen3.style.display = "flex";
+      }, 600);
+    } else {
+      alert("입력하신 정보가 맞지 않습니다.");
+
+    }
+
+  }
+  // chuyển sang screen 4
+  function go4() {
+    loader.style.display = "flex";
+
+    setTimeout(() => {
+      loader.style.display = "none";
+
+      screen3.style.display = "none";
+      screen4.style.display = "block";
+    }, 800);
+  }
+  function go1() {
+    loader.style.display = "flex";
+
+    setTimeout(() => {
+      loader.style.display = "none";
+    }, 800);
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    setTimeout(function () {
+      document.getElementById("loader").style.display = "none";
+    }, 1000);
+  });
+
+
+</script>
+
+
+
+
+</html>
