@@ -10,7 +10,7 @@
     },
     {
       "source": "/2026/:path*",
-      "destination": " https://demo-tinhlatao.vercel.app//:path*"
+      "destination": " https://demo-tinhlatao.vercel.app/:path*"
     }
   ]
 }
